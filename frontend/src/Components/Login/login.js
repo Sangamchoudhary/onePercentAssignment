@@ -1,6 +1,6 @@
 import "./login.css";
 import { Navigate } from "react-router-dom";
-
+import React, { useState } from "react";
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -9,7 +9,7 @@ export default function LoginPage() {
   async function login(e) {
     e.preventDefault();
 
-    const response = await fetch("https://one-percent-todoist.vercel.app/api/user/login", {
+    const response = await fetch("http://localhost:4000/api/user/login", {
       method: "Post",
       body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" },
@@ -26,6 +26,7 @@ export default function LoginPage() {
   }
 
   if (redirect) {
+    window.location.reload();
     return <Navigate to={"/"} />;
   }
 

@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
 import "./signup.css";
+import { isUserLoggedIn } from "../../userLoggedIn";
 export default function SignupPage() {
+  if(isUserLoggedIn()){ <Navigate to={"/"} /> }
+
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
 
   async function signup(ev) {
     ev.preventDefault();
-    const response = await fetch("https://one-percent-todoist.vercel.app/api/user/signup", {
+    const response = await fetch("http://localhost:4000/api/user/signup", {
       method: "Post",
       body: JSON.stringify({ username, email, password }),
       headers: { "Content-Type": "application/json" },
