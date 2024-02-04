@@ -9,7 +9,7 @@ export default function LoginPage() {
   async function login(e) {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:4000/api/user/login", {
+    const response = await fetch("https://one-percent-todoist.vercel.app/api/user/login", {
       method: "Post",
       body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" },
