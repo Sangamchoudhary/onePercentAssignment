@@ -50,10 +50,10 @@ module.exports.login = async function login(req, res) {
     if (!isPassowrdMatch) throw "wrong credentials";
     const uid = user["_id"];
     const token = jwt.sign({ payload: uid }, jwt_key);
-    res.cookie("login", token);
-    return res.json({
+    return res.cookie("login", token).json({
       success: true,
       message: "User is logged in",
+      login: token
     });
   } catch (err) {
     return err.message

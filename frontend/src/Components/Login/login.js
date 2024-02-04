@@ -1,6 +1,7 @@
 import "./login.css";
 import { Navigate } from "react-router-dom";
 import React, { useState } from "react";
+
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -9,17 +10,20 @@ export default function LoginPage() {
   async function login(e) {
     e.preventDefault();
 
-    const response = await fetch("https://one-percent-todoist.vercel.app/api/user/login", {
-      method: "Post",
-      body: JSON.stringify({ email, password }),
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-    });
+    const response = await fetch(
+      "https://one-percent-todoist.vercel.app/api/user/login",
+      {
+        method: "Post",
+        body: JSON.stringify({ email, password }),
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      }
+    );
     if (response.status === 200) {
       alert("Logged in successfully");
-      response.json().then((userInfo) => {
-        setRedirect(true);
-      });
+      const data = await response.json();
+      localStorage.setItem("login", data.login);
+      setRedirect(true);
     } else {
       alert("Login failed, wrong credentials");
     }

@@ -22,9 +22,8 @@ const userSchema = mongoose.Schema({
 });
 
 userSchema.pre("save", async function () {
-  let salt = await bcrypt.genSalt();
-  let hashedPassword = await bcrypt.hash(this.password, salt);
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(this.password, salt);
   this.password = hashedPassword;
 });
-
 module.exports = mongoose.model("userModel", userSchema);
