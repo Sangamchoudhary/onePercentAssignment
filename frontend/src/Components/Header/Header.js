@@ -4,7 +4,7 @@ import "./Header.css";
 
 export default function Header() {
   async function logout() {
-    await fetch("http://localhost:4000/api/user/logout", {
+    await fetch("https://one-percent-todoist.vercel.app/api/user/logout", {
       credentials: "include",
       method: "GET",
     });

@@ -3,7 +3,7 @@ import TaskContext from "./taskContext";
 import { useState } from "react";
 
 const TaskState = (props) => {
-  const host = "http://localhost:4000";
+  const host = "https://one-percent-todoist.vercel.app";
   const [tasks, setTasks] = useState([]);
 
   const getTasks = async () => {

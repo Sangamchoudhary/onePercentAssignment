@@ -8,7 +8,7 @@ export default function SignupPage() {
 
   async function signup(ev) {
     ev.preventDefault();
-    const response = await fetch("http://localhost:4000/api/user/signup", {
+    const response = await fetch("https://one-percent-todoist.vercel.app/api/user/signup", {
       method: "Post",
       body: JSON.stringify({ username, email, password }),
       headers: { "Content-Type": "application/json" },

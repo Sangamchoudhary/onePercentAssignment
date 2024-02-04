@@ -8,7 +8,7 @@ const app = express();
 
 mongoose.set("strictQuery", true);
 
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors({ credentials: true, origin: "https://one-percent-assignment-frontend.vercel.app" }));
 app.use(express.json());
 app.listen(4000);
 app.use(cookieParser());
